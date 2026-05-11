@@ -1,5 +1,5 @@
 import json
-from src.database import db
+from database import db
 
 
 def load_transactions():
