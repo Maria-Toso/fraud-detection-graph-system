@@ -2,33 +2,128 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fraud Detection Dashboard</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#0f172a;
+            color:white;
+            padding:40px;
+        }
+
+        h1{
+            font-size:40px;
+            margin-bottom:10px;
+        }
+
+        .subtitle{
+            color:#94a3b8;
+            margin-bottom:40px;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:20px;
+        }
+
+        .card{
+            background:#1e293b;
+            border:1px solid #334155;
+            border-radius:16px;
+            padding:24px;
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+            border-color:#3b82f6;
+        }
+
+        .device{
+            color:#3b82f6;
+            font-size:24px;
+            margin-bottom:12px;
+        }
+
+        .users{
+            margin-top:10px;
+            color:#cbd5e1;
+        }
+
+        .risk{
+            display:inline-block;
+            margin-top:16px;
+            padding:8px 14px;
+            background:#dc2626;
+            border-radius:999px;
+            font-size:14px;
+            font-weight:bold;
+        }
+
+    </style>
+
 </head>
 <body>
-    <h1>Fraud Detection Graph System</h1>
-    <p>Graph-based fraud monitoring dashboard.</p>
 
-    <section>
-        <h2>Suspicious Devices</h2>
-        <div id="devices"></div>
-    </section>
+    <h1>Fraud Detection Graph System</h1>
+
+    <p class="subtitle">
+        Graph-based fraud monitoring dashboard powered by Neo4j and Flask.
+    </p>
+
+    <div class="cards" id="devices"></div>
 
     <script>
-        fetch("/suspicious-devices")
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById("devices");
 
-                data.suspicious_devices.forEach(device => {
-                    container.innerHTML += `
-                        <div>
-                            <h3>Device: ${device.shared_device}</h3>
-                            <p>Total users: ${device.total_users}</p>
-                            <p>Users: ${device.users.join(", ")}</p>
+        fetch("/suspicious-devices")
+        .then(response => response.json())
+        .then(data => {
+
+            const container = document.getElementById("devices");
+
+            data.suspicious_devices.forEach(device => {
+
+                container.innerHTML += `
+
+                    <div class="card">
+
+                        <div class="device">
+                            Suspicious Device: ${device.shared_device}
                         </div>
-                    `;
-                });
+
+                        <p>
+                            <strong>Total Users:</strong>
+                            ${device.total_users}
+                        </p>
+
+                        <div class="users">
+                            <strong>Connected Users:</strong><br>
+                            ${device.users.join("<br>")}
+                        </div>
+
+                        <div class="risk">
+                            HIGH RISK
+                        </div>
+
+                    </div>
+
+                `;
+
             });
+
+        });
+
     </script>
+
 </body>
 </html>
