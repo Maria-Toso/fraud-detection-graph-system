@@ -17,11 +17,12 @@ def load_data():
     return load_transactions()
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
-
 @app.route("/suspicious-devices")
 def suspicious_devices():
     return {
         "suspicious_devices": detect_suspicious_devices()
     }
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
