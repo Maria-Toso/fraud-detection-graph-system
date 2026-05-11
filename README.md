@@ -7,17 +7,17 @@
 
 ---
 
-# Fraud Detection Graph System
-
-Graph-based fraud detection system using Neo4j, Python and Flask to identify suspicious transaction patterns through relationship analysis.
+A fullstack graph-based fraud detection prototype built with Neo4j, Flask, and Python to identify suspicious transaction patterns through relationship analysis and graph traversal techniques.
 
 ---
 
 ## Overview
 
-This project explores how graph databases can be used to detect potential fraud by analyzing connections between users, cards, devices, IP addresses, merchants, and transactions.
+This project explores how graph databases can be used to detect potential fraud by analyzing relationships between users, cards, devices, IP addresses, merchants, and transactions.
 
-The system models financial behavior as a graph, allowing suspicious patterns to be detected through relationship traversal and graph-based risk analysis.
+Instead of analyzing transactions in isolation, the system models financial behavior as a connected graph structure, enabling suspicious patterns to be detected through relationship traversal and graph analytics.
+
+The project demonstrates how graph databases can improve fraud detection systems by identifying hidden connections and behavioral anomalies.
 
 ---
 
@@ -39,17 +39,17 @@ The system models financial behavior as a graph, allowing suspicious patterns to
 
 ## Core Idea
 
-Fraud is often not visible in isolated transactions.
+Fraud is often difficult to detect when transactions are analyzed individually.
 
-However, suspicious behavior can appear when analyzing relationships such as:
+However, suspicious activity becomes more visible when analyzing relationships such as:
 
 - Multiple users sharing the same device
 - Several cards linked to the same IP address
 - Users connected to suspicious merchants
-- Transactions occurring through unusual connection patterns
+- Abnormal transaction relationship patterns
 - Dense networks of related accounts and payment methods
 
-This project uses Neo4j to represent these connections and identify potential fraud risks.
+This project uses Neo4j graph modeling to represent these relationships and identify potential fraud risks through connected data analysis.
 
 ---
 
@@ -57,9 +57,11 @@ This project uses Neo4j to represent these connections and identify potential fr
 
 - Transaction relationship modeling with Neo4j
 - Shared device fraud detection
+- Graph-based suspicious activity analysis
 - Flask API integration
 - Interactive fraud monitoring dashboard
-- Graph-based suspicious activity analysis
+- Cypher-based relationship queries
+- Connected data exploration
 
 ---
 
@@ -67,23 +69,58 @@ This project uses Neo4j to represent these connections and identify potential fr
 
 The system is structured into three main layers:
 
-- Flask API for backend services
-- Neo4j graph database for relationship analysis
-- Dashboard frontend for fraud monitoring visualization
+### Backend Layer
+- Flask API handling fraud analysis endpoints
+- Data processing and transaction loading
+- Fraud detection service logic
 
-Transactions are transformed into graph relationships, enabling complex fraud pattern detection through Cypher queries.
+### Database Layer
+- Neo4j graph database for connected data modeling
+- Relationship traversal using Cypher queries
+- Fraud pattern analysis through graph structures
+
+### Frontend Layer
+- Interactive dashboard interface
+- Suspicious activity visualization
+- Fraud monitoring cards and alerts
+
+Transactions are transformed into graph relationships, enabling efficient exploration of suspicious behavioral patterns.
 
 ---
 
-## Planned Features
+## Graph Model
+
+The graph structure represents entities and relationships such as:
+
+### Nodes
+- Users
+- Cards
+- Devices
+- IP Addresses
+- Transactions
+- Merchants
+
+### Relationships
+- `OWNS_CARD`
+- `USES_DEVICE`
+- `CONNECTED_TO`
+- `USED_IN`
+- `SENT_TO`
+
+This structure enables advanced fraud analysis through graph traversal and relationship exploration.
+
+---
+
+## Features
 
 - Graph-based fraud relationship modeling
-- Suspicious transaction detection
-- Risk scoring system
-- Cypher queries for fraud pattern analysis
-- Flask backend API
-- Simple dashboard for visualizing suspicious activity
-- Neo4j graph visualization
+- Suspicious device detection
+- Shared relationship analysis
+- Fraud monitoring dashboard
+- Cypher query analysis
+- Connected transaction exploration
+- Backend API services
+- Relationship traversal logic
 
 ---
 
@@ -96,6 +133,7 @@ Transactions are transformed into graph relationships, enabling complex fraud pa
 - HTML
 - CSS
 - JavaScript
+- Docker
 
 ---
 
@@ -104,8 +142,98 @@ Transactions are transformed into graph relationships, enabling complex fraud pa
 | Endpoint | Description |
 |---|---|
 | `/load-data` | Loads transaction data into Neo4j |
-| `/suspicious-devices` | Detects shared suspicious devices |
+| `/suspicious-devices` | Detects suspicious shared devices |
 | `/dashboard` | Fraud monitoring dashboard |
+
+---
+
+## Project Structure
+
+```txt
+fraud-detection-graph-system/
+│
+┣ assets/
+┣ data/
+┣ docs/
+┣ src/
+┃ ┣ services/
+┃ ┣ templates/
+┃ ┣ static/
+┃ ┣ app.py
+┃ ┗ database.py
+│
+┣ requirements.txt
+┣ .env.example
+┗ README.md
+```
+
+---
+
+## How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Maria-Toso/fraud-detection-graph-system.git
+```
+
+---
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 3. Start Neo4j with Docker
+
+```bash
+docker run --name neo4j-fraud \
+-p 7474:7474 \
+-p 7687:7687 \
+-e NEO4J_AUTH=neo4j/password123 \
+-d neo4j:5
+```
+
+---
+
+### 4. Create a `.env` file
+
+```env
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USERNAME=neo4j
+NEO4J_PASSWORD=password123
+```
+
+---
+
+### 5. Run the application
+
+```bash
+python src/app.py
+```
+
+---
+
+### 6. Load sample data
+
+Access:
+
+```txt
+/load-data
+```
+
+---
+
+### 7. Open the dashboard
+
+Access:
+
+```txt
+/dashboard
+```
 
 ---
 
@@ -116,14 +244,16 @@ Transactions are transformed into graph relationships, enabling complex fraud pa
 - Advanced graph analytics
 - Interactive Neo4j visualization
 - Authentication system
-- Docker deployment
-- Cloud infrastructure integration
+- Docker Compose integration
+- Cloud deployment
+- Machine learning fraud analysis
+- Real-time alert system
 
 ---
 
 ## Project Status
 
-Active development with core fraud detection features already implemented.
+Active development with core fraud detection and graph analysis features already implemented.
 
 ---
 
