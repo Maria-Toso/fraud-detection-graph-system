@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from services.fraud_service import load_transactions, detect_suspicious_devices
 
 app = Flask(__name__)
@@ -23,6 +23,9 @@ def suspicious_devices():
         "suspicious_devices": detect_suspicious_devices()
     }
 
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
