@@ -1,5 +1,5 @@
 from flask import Flask
-from src.services.fraud_service import load_transactions
+from services.fraud_service import load_transactions
 
 app = Flask(__name__)
 
