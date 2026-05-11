@@ -34,3 +34,22 @@ def load_transactions():
         "message": "Transactions loaded successfully",
         "transactions": len(transactions)
     }
+
+def detect_suspicious_devices():
+    query = """
+    MATCH (u:User)-[:USES_DEVICE]->(d:Device)
+    WITH d, collect(u.name) AS users, count(u) AS total_users
+    WHERE total_users > 1
+    RETURN d.id AS shared_device, users, total_users
+    """
+
+    results = db.execute_query(query)
+
+    return [
+        {
+            "shared_device": record["shared_device"],
+            "users": record["users"],
+            "total_users": record["total_users"]
+        }
+        for record in results
+    ]
