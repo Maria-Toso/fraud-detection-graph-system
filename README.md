@@ -140,7 +140,7 @@ This structure enables advanced fraud analysis through graph traversal and relat
 ## API Endpoints
 
 | Endpoint | Description |
-|---|---|
+| --- | --- |
 | `/load-data` | Loads transaction data into Neo4j |
 | `/suspicious-devices` | Detects suspicious shared devices |
 | `/dashboard` | Fraud monitoring dashboard |
