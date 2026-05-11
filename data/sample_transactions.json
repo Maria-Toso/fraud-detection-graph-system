@@ -1,0 +1,52 @@
+[
+  {
+    "user_id": "U001",
+    "user_name": "Ana Silva",
+    "card_id": "C001",
+    "device_id": "D001",
+    "ip_address": "192.168.0.10",
+    "merchant": "Tech Store",
+    "amount": 250.00,
+    "status": "normal"
+  },
+  {
+    "user_id": "U002",
+    "user_name": "Bruno Costa",
+    "card_id": "C002",
+    "device_id": "D002",
+    "ip_address": "192.168.0.11",
+    "merchant": "Book Shop",
+    "amount": 80.00,
+    "status": "normal"
+  },
+  {
+    "user_id": "U003",
+    "user_name": "Carla Souza",
+    "card_id": "C003",
+    "device_id": "D009",
+    "ip_address": "10.0.0.55",
+    "merchant": "Luxury Market",
+    "amount": 3200.00,
+    "status": "suspicious"
+  },
+  {
+    "user_id": "U004",
+    "user_name": "Diego Lima",
+    "card_id": "C004",
+    "device_id": "D009",
+    "ip_address": "10.0.0.55",
+    "merchant": "Luxury Market",
+    "amount": 4100.00,
+    "status": "suspicious"
+  },
+  {
+    "user_id": "U005",
+    "user_name": "Eva Martins",
+    "card_id": "C005",
+    "device_id": "D009",
+    "ip_address": "10.0.0.55",
+    "merchant": "Luxury Market",
+    "amount": 2800.00,
+    "status": "suspicious"
+  }
+]
